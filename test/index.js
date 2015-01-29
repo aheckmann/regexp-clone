@@ -1,6 +1,6 @@
 
 var assert = require('assert')
-var clone = require('../');
+var cloneRegex = require('../');
 
 describe('regexp-clone', function(){
   function hasEqualSource (a, b) {
@@ -21,21 +21,21 @@ describe('regexp-clone', function(){
   }
 
   function insensitiveFlag (a) {
-    var b = clone(a);
+    var b = cloneRegex(a);
     hasEqualSource(a, b);
     isInsensitive(a);
     isInsensitive(b);
   }
 
   function globalFlag (a) {
-    var b = clone(a);
+    var b = cloneRegex(a);
     hasEqualSource(a, b);
     isGlobal(a);
     isGlobal(b);
   }
 
   function multilineFlag (a) {
-    var b = clone(a);
+    var b = cloneRegex(a);
     hasEqualSource(a, b);
     isMultiline(a);
     isMultiline(b);
@@ -59,7 +59,7 @@ describe('regexp-clone', function(){
     })
     it('no flags', function(done){
       var a = /hello/;
-      var b = clone(a);
+      var b = cloneRegex(a);
       hasEqualSource(a, b);
       assert.ok(!a.insensitive);
       assert.ok(!a.global);
@@ -75,7 +75,7 @@ describe('regexp-clone', function(){
     })
     it('should add flags provided as a string', function(done) {
       var a = /hello/g;
-      var b = clone(a, 'mi');
+      var b = cloneRegex(a, 'mi');
       assert.ok(b.global);
       assert.ok(b.multiline);
       assert.ok(b.ignoreCase);
@@ -83,7 +83,7 @@ describe('regexp-clone', function(){
     })
     it('should add flags from an object', function(done) {
       var a = /hello/g;
-      var b = clone(a, {
+      var b = cloneRegex(a, {
         multiline: true,
         ignoreCase: true
       });
@@ -94,7 +94,7 @@ describe('regexp-clone', function(){
     })
     it('should preserve flags that are missing in a given override object', function(done) {
       var a = /hello/g;
-      var b = clone(a, {});
+      var b = cloneRegex(a, {});
       assert.ok(b.global);
       assert.ok(!b.multiline);
       assert.ok(!b.ignoreCase);
@@ -102,7 +102,7 @@ describe('regexp-clone', function(){
     })
     it('should override true flags', function(done) {
       var a = /hello/g;
-      var b = clone(a, {
+      var b = cloneRegex(a, {
         'global': false,
         multiline: true,
         ignoreCase: true
@@ -132,7 +132,7 @@ describe('regexp-clone', function(){
     })
     it('no flags', function(done){
       var a = new RegExp('hmm');
-      var b = clone(a);
+      var b = cloneRegex(a);
       hasEqualSource(a, b);
       assert.ok(!a.insensitive);
       assert.ok(!a.global);
@@ -150,7 +150,7 @@ describe('regexp-clone', function(){
 
   describe('toFlagString', function() {
     it('should convert a flag object to a string of flag characters', function(done) {
-      assert.deepEqual(clone.toFlagString({
+      assert.deepEqual(cloneRegex.toFlagString({
         'global': true,
         'ignoreCase': false
       }), 'g')
@@ -160,7 +160,7 @@ describe('regexp-clone', function(){
 
   describe('parseFlagString', function() {
     it('should convert a string of flag characters to a flag object', function(done) {
-      assert.deepEqual(clone.parseFlagString('gmi'), {
+      assert.deepEqual(cloneRegex.parseFlagString('gmi'), {
         'global': true,
         'multiline': true,
         'ignoreCase': true
