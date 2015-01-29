@@ -1,5 +1,4 @@
-#regexp-clone
-==============
+# regexp-clone
 
 Clones RegExps with flag preservation:
 
