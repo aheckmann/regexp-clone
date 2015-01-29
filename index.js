@@ -1,6 +1,6 @@
 /*jslint node:true, vars:true*/
 
-var exports;
+var module;
 (function (undef) {'use strict';
 
 
@@ -70,7 +70,7 @@ function toFlagString (flagObject) {
 * @param {RegExp|object|string} newFlags Values for overriding the regex
 * @returns {RegExp} The cloned (and optionally altered) RegExp
 */
-function clone (regex, newFlags) {
+function cloneRegex (regex, newFlags) {
 
   newFlags = newFlags || {};
 
@@ -80,9 +80,15 @@ function clone (regex, newFlags) {
   return new RegExp(regex.source, mergedFlagString);
 }
 
-module.exports = exports = clone;
-exports.parseFlagString = parseFlagString;
-exports.mergeFlagObjects = mergeFlagObjects;
-exports.toFlagString = toFlagString;
+cloneRegex.parseFlagString = parseFlagString;
+cloneRegex.mergeFlagObjects = mergeFlagObjects;
+cloneRegex.toFlagString = toFlagString;
+
+if (module === undef) {
+    window.cloneRegex = cloneRegex;
+}
+else {
+    module.exports = cloneRegex;
+}
 
 }());
