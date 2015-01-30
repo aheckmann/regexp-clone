@@ -20,6 +20,8 @@ var propertyFlagMap = flags.reduce(function (o, f) {
 
 /**
 * Creates a flag object from a string of flags. Unspecified flags are omitted (not set to false).
+* @param {string} s The string from which to create a flag object
+* @returns {object} The object with boolean RegExp properties
 * @example
     parseFlagString('gm') ->
     {
