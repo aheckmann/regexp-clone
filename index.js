@@ -15,6 +15,13 @@ module.exports = exports = function (regexp) {
   if (regexp.global) flags.push('g');
   if (regexp.multiline) flags.push('m');
   if (regexp.ignoreCase) flags.push('i');
-  return new RegExp(regexp.source, flags.join(''));
+  if (regexp.dotAll) flags.push('s');
+  if (regexp.unicode) flags.push('u');
+  if (regexp.sticky) flags.push('y');
+  var result = new RegExp(regexp.source, flags.join(''));
+  if (typeof regexp.lastIndex === 'number') {
+    result.lastIndex = regexp.lastIndex;
+  }
+  return result;
 }
 
