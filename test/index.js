@@ -64,12 +64,12 @@ describe('regexp-clone', function(){
   function noFlags(a) {
     const b = clone(a);
     hasEqualSource(a, b);
-    assert.ok(!a.ignoreCase);
-    assert.ok(!a.global);
-    assert.ok(!a.multiline);
-    assert.ok(!a.dotAll);
-    assert.ok(!a.unicode);
-    assert.ok(!a.sticky);
+    assert.ok(!b.ignoreCase);
+    assert.ok(!b.global);
+    assert.ok(!b.multiline);
+    assert.ok(!b.dotAll);
+    assert.ok(!b.unicode);
+    assert.ok(!b.sticky);
   }
 
   describe('literals', function(){
