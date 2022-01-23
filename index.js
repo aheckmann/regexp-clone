@@ -11,14 +11,7 @@ module.exports = exports = function (regexp) {
     throw new TypeError('Not a RegExp');
   }
 
-  const flags = [];
-  if (regexp.global) flags.push('g');
-  if (regexp.multiline) flags.push('m');
-  if (regexp.ignoreCase) flags.push('i');
-  if (regexp.dotAll) flags.push('s');
-  if (regexp.unicode) flags.push('u');
-  if (regexp.sticky) flags.push('y');
-  const result = new RegExp(regexp.source, flags.join(''));
+  const result = new RegExp(regexp.source, regexp.flags);
   if (typeof regexp.lastIndex === 'number') {
     result.lastIndex = regexp.lastIndex;
   }
