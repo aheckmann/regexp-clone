@@ -16,6 +16,7 @@
   ],
   "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
   "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
   "devDependencies": {
     "mocha": "^6.1.4"
   }
