@@ -16,8 +16,11 @@ module.exports = exports = function (regexp) {
   if (regexp.multiline) flags.push('m');
   if (regexp.ignoreCase) flags.push('i');
   if (regexp.dotAll) flags.push('s');
-  if (regexp.unicode) flags.push('u');
   if (regexp.sticky) flags.push('y');
+  if (regexp.unicode) flags.push('u');
+  if (regexp.unicodeSets) flags.push('v');
+  if (regexp.hasIndices) flags.push('d');
+
   const result = new RegExp(regexp.source, flags.join(''));
   if (typeof regexp.lastIndex === 'number') {
     result.lastIndex = regexp.lastIndex;
