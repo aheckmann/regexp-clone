@@ -13,8 +13,12 @@
     "test": "node test/index.js",
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "check": "eslint .",
-    "fix": "eslint . --fix"
+    "fix": "pnpm run '/^(format|lint)$/'",
+    "check": "pnpm run '/.*:check$/'",
+    "format": "prettier --write --cache --cache-location .prettiercache .",
+    "format:check": "prettier --check --cache --cache-location .prettiercache .",
+    "lint": "eslint --fix --cache --cache-location .eslintcache .",
+    "lint:check": "eslint --cache --cache-location .eslintcache ."
   },
   "files": [
     "index.js",
