@@ -180,7 +180,7 @@ describe('regexp-clone', function () {
   });
 
   describe('non-RegExps', () => {
-    it('should throwfor strings', () => {
+    it('should throw for strings', () => {
       assert.throws(() => clone('hello'));
     });
     it('should throw for numbers', () => {
