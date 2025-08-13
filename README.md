@@ -1,17 +1,18 @@
 # regexp-clone
 
-Clones RegExps with flag and `lastIndex` preservation.
+Zero dependency `RegExp` cloner with flag and `lastIndex` preservation.
 
 ```js
 const regexpClone = require('regexp-clone');
 
-const a = /somethin/misguy;
+const a = /somethin/misguyd;
 console.log(a.global); // true
 console.log(a.ignoreCase); // true
 console.log(a.multiline); // true
 console.log(a.dotAll); // true
 console.log(a.unicode); // true
 console.log(a.sticky); // true
+console.log(a.hasIndices); // true
 
 const b = regexpClone(a);
 console.log(b.global); // true
@@ -20,6 +21,7 @@ console.log(b.multiline); // true
 console.log(b.dotAll); // true
 console.log(b.unicode); // true
 console.log(b.sticky); // true
+console.log(b.hasIndices); // true
 
 const c = /hi/g;
 c.test('this string hi there');
@@ -32,8 +34,16 @@ assert.strictEqual(d.lastIndex, 14);
 assert.strictEqual(c.lastIndex, 3);
 ```
 
+## Installation
+
+```bash
+pnpm add regexp-clone
 ```
-npm install regexp-clone
+
+## Testing
+
+```bash
+pnpm test
 ```
 
 ## License

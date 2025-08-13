@@ -1,5 +1,5 @@
-
-const assert = require('assert')
+const { describe, it } = require('node:test')
+const assert = require('node:assert')
 const clone = require('../');
 
 describe('regexp-clone', function () {
@@ -84,120 +84,98 @@ describe('regexp-clone', function () {
   }
 
   describe('literals', function () {
-    it('ignoreCase flag', function (done) {
+    it('ignoreCase flag', function () {
       const a = /hello/i;
       testFlag(a, isIgnoreCase);
-      done();
     })
-    it('global flag', function (done) {
+    it('global flag', function () {
       const a = /hello/g;
       testFlag(a, isGlobal);
-      done();
     })
-    it('multiline flag', function (done) {
+    it('multiline flag', function () {
       const a = /hello/m;
       testFlag(a, isMultiline);
-      done();
     })
-    it('dotAll flag', function (done) {
+    it('dotAll flag', function () {
       const a = /hello/s;
       testFlag(a, isDotAll);
-      done();
     })
-    it('unicode flag', function (done) {
+    it('unicode flag', function () {
       const a = /hello/u;
       testFlag(a, isUnicode);
-      done();
     })
-    it('sticky flag', function (done) {
+    it('sticky flag', function () {
       const a = /hello/y;
       testFlag(a, isSticky);
-      done();
     })
-    it('hasIndices flag', function (done) {
+    it('hasIndices flag', function () {
       const a = /hello/d;
       testFlag(a, isIndices);
-      done();
     })
-    it('unicodeSets flag', function (done) {
+    it('unicodeSets flag', function () {
       const a = /hello/v;
       testFlag(a, isUnicodeSet);
-      done();
     })
-    it('no flags', function (done) {
+    it('no flags', function () {
       const a = /hello/;
       noFlags(a);
-      done();
     })
-    it('all flags', function (done) {
+    it('all flags', function () {
       allFlags(/hello/gimsuyd, isUnicode);
       allFlags(/hello/gimsvyd, isUnicodeSet);
-      done();
     })
-    it('lastIndex', function (done) {
+    it('lastIndex', function () {
       const a = /hi/g;
       lastIndex(a);
-      done();
     })
   })
 
   describe('instances', function () {
-    it('ignoreCase flag', function (done) {
+    it('ignoreCase flag', function () {
       const a = new RegExp('hello', 'i');
       testFlag(a, isIgnoreCase);
-      done();
     })
-    it('global flag', function (done) {
+    it('global flag', function () {
       const a = new RegExp('hello', 'g');
       testFlag(a, isGlobal);
-      done();
     })
-    it('multiline flag', function (done) {
+    it('multiline flag', function () {
       const a = new RegExp('hello', 'm');
       testFlag(a, isMultiline);
-      done();
     })
-    it('dotAll flag', function (done) {
+    it('dotAll flag', function () {
       const a = new RegExp('hello', 's');
       testFlag(a, isDotAll);
-      done();
     })
-    it('unicode flag', function (done) {
+    it('unicode flag', function () {
       const a = new RegExp('hello', 'u');
       testFlag(a, isUnicode);
-      done();
     })
-    it('sticky flag', function (done) {
+    it('sticky flag', function () {
       const a = new RegExp('hello', 'y');
       testFlag(a, isSticky);
-      done();
     })
-    it('hasIndices flag', function (done) {
+    it('hasIndices flag', function () {
       const a = new RegExp('hello', 'd');
       testFlag(a, isIndices);
-      done();
     })
-    it('unicodeSets flag', function (done) {
+    it('unicodeSets flag', function () {
       const a = new RegExp('hello', 'v');
       testFlag(a, isUnicodeSet);
-      done();
     })
-    it('no flags', function (done) {
+    it('no flags', function () {
       const a = new RegExp('hmm');
       noFlags(a);
-      done();
     })
-    it('all flags', function (done) {
+    it('all flags', function () {
       const a = new RegExp('hello', 'misguyd');
       allFlags(a, isUnicode);
       const b = new RegExp('hello', 'misgvyd');
       allFlags(b, isUnicodeSet);
-      done();
     })
-    it('lastIndex', function (done) {
+    it('lastIndex', function () {
       const a = new RegExp('hi', 'g');
       lastIndex(a);
-      done();
     })
   })
 })
