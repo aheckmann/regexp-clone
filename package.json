@@ -1,6 +1,6 @@
 {
   "name": "regexp-clone",
-  "version": "1.1.1-0",
+  "version": "1.1.1-1",
   "description": "Zero dependency RegExp cloning with flag and lastIndex preservation.",
   "main": "index.js",
   "exports": {
