@@ -3,12 +3,35 @@
   "version": "1.1.0",
   "description": "Zero dependency RegExp cloning with flag and lastIndex preservation.",
   "main": "index.js",
-  "scripts": {
-    "test": "node test/index.js"
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
   },
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "test": "node test/index.js",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "fix": "pnpm run '/^(format|lint)$/'",
+    "check": "pnpm run '/.*:check$/'",
+    "format": "prettier --write --cache --cache-location .prettiercache .",
+    "format:check": "prettier --check --cache --cache-location .prettiercache .",
+    "lint": "eslint --fix --cache --cache-location .eslintcache .",
+    "lint:check": "eslint --cache --cache-location .eslintcache ."
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/aheckmann/regexp-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aheckmann/regexp-clone/issues"
   },
   "keywords": [
     "RegExp",
@@ -16,5 +39,14 @@
   ],
   "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
   "license": "MIT",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@eslint/markdown": "^7.1.0",
+    "eslint": "^9.33.0",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "prettier": "3.6.2",
+    "typescript": "^5.9.2"
+  }
 }

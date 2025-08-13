@@ -1,11 +1,18 @@
-# regexp-clone
+# regexp-clone <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
+
+[![npm badge][npm-badge-png]][package-url]
 
 Zero dependency `RegExp` cloner with flag and `lastIndex` preservation.
 
-```js
-const regexpClone = require('regexp-clone');
+## Usage
 
-const a = /somethin/misguyd;
+```js
+const clone = require('regexp-clone');
+
+const a = /somethin/dgimsuy;
 console.log(a.global); // true
 console.log(a.ignoreCase); // true
 console.log(a.multiline); // true
@@ -14,7 +21,7 @@ console.log(a.unicode); // true
 console.log(a.sticky); // true
 console.log(a.hasIndices); // true
 
-const b = regexpClone(a);
+const b = clone(a);
 console.log(b.global); // true
 console.log(b.ignoreCase); // true
 console.log(b.multiline); // true
@@ -27,7 +34,7 @@ const c = /hi/g;
 c.test('this string hi there');
 assert.strictEqual(c.lastIndex, 3);
 
-const d = regexpClone(c);
+const d = clone(c);
 assert.strictEqual(d.lastIndex, 3);
 d.test('this string hi there');
 assert.strictEqual(d.lastIndex, 14);
@@ -48,4 +55,12 @@ pnpm test
 
 ## License
 
-[MIT](https://github.com/aheckmann/regexp-clone/blob/master/LICENSE)
+[MIT][license-url]
+
+[package-url]: https://npmjs.org/package/regexp-clone
+[npm-version-svg]: https://versionbadg.es/aheckmann/regexp-clone.svg
+[npm-badge-png]: https://nodei.co/npm/regexp-clone.png?downloads=true&stars=true
+[license-image]: https://img.shields.io/npm/l/regexp-clone.svg
+[license-url]: https://github.com/aheckmann/regexp-clone/blob/main/LICENSE
+[downloads-image]: https://img.shields.io/npm/dm/regexp-clone.svg
+[downloads-url]: https://npm-stat.com/charts.html?package=regexp-clone
