@@ -1,0 +1,94 @@
+#! /usr/bin/env bash
+
+set -e  # Exit on any error
+
+# Function to print error and exit
+error_exit() {
+  printf "\nError: $1\n" >&2
+  exit 1
+}
+
+usage="\n\nUsage: $0 [--dry-run] {major|minor|patch|premajor|preminor|prepatch|prerelease}"
+
+# Parse arguments
+DRY_RUN=false
+VERSION_TYPE=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --dry-run)
+      DRY_RUN=true
+      shift
+      ;;
+    major|minor|patch|premajor|preminor|prepatch|prerelease)
+      if [[ -n "$VERSION_TYPE" ]]; then
+        error_exit "Only one version type allowed. $usage"
+      fi
+      VERSION_TYPE=$1
+      shift
+      ;;
+    *)
+      error_exit "Unknown argument: $1 $usage"
+      ;;
+  esac
+done
+
+# Validate that version type was provided
+if [[ -z "$VERSION_TYPE" ]]; then
+  error_exit "Version type is required. $usage"
+fi
+
+print() {
+  if [[ "$DRY_RUN" == "true" ]]; then
+    printf "[DRY RUN] $1\n"
+  else
+    printf "$1\n"
+  fi
+}
+
+# Function to execute or print command based on dry-run mode
+execute_or_print() {
+  local cmd="$1"
+  local description="$2"
+
+  if [[ "$DRY_RUN" == "true" ]]; then
+    print "Would execute: $cmd"
+    return 0
+  else
+    print "$description"
+    eval "$cmd"
+    return $?
+  fi
+}
+
+print "Starting release process for $VERSION_TYPE version..."
+
+# Run tests
+if ! execute_or_print "pnpm test" "Running tests..."; then
+  error_exit "Tests failed. Release aborted."
+fi
+print "Tests passed ✓"
+
+# Update version
+if ! execute_or_print "pnpm version \"$VERSION_TYPE\"" "Updating version ($VERSION_TYPE)..."; then
+  error_exit "Version update failed."
+fi
+print "Version updated ✓"
+
+# Publish to npm
+if ! execute_or_print "pnpm publish" "Publishing to npm..."; then
+  error_exit "npm publish failed."
+fi
+print "Published successfully ✓"
+
+# Push to git with tags
+if ! execute_or_print "git push origin main --tags" "Pushing to git with tags..."; then
+  error_exit "Git push failed."
+fi
+print "Git push completed ✓"
+
+if [[ "$DRY_RUN" == "true" ]]; then
+  printf "[DRY RUN] completed - no actual changes were made."
+else
+  printf "Release completed successfully!"
+fi
