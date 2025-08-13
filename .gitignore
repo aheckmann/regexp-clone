@@ -1,5 +1,5 @@
 *.sw*
 node_modules/
-/*-lock.json
+/package-lock.json
 /.eslintcache
 /.prettiercache
