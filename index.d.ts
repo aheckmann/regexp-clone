@@ -11,7 +11,7 @@ declare namespace regexpClone {
 }
 /**
  * Check if the given object is a RegExp
- * @param {any} o - The object to check
+ * @param {unknown} o - The object to check
  * @returns {o is RegExp} True if the object is a RegExp, false otherwise
  */
-declare function isRegExp(o: any): o is RegExp;
+declare function isRegExp(o: unknown): o is RegExp;

@@ -4,7 +4,7 @@ const toString = Object.prototype.toString;
 
 /**
  * Check if the given object is a RegExp
- * @param {any} o - The object to check
+ * @param {unknown} o - The object to check
  * @returns {o is RegExp} True if the object is a RegExp, false otherwise
  */
 function isRegExp(o) {
