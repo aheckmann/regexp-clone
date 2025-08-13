@@ -4,6 +4,7 @@
   "description": "Zero dependency RegExp cloning with flag and lastIndex preservation.",
   "main": "index.js",
   "types": "index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "test": "node test/index.js",
     "build": "tsc",
