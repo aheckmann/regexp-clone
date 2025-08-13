@@ -12,7 +12,7 @@ Zero dependency `RegExp` cloner with flag and `lastIndex` preservation.
 ```js
 const clone = require('regexp-clone');
 
-const a = /somethin/misguyd;
+const a = /somethin/dgimsuy;
 console.log(a.global); // true
 console.log(a.ignoreCase); // true
 console.log(a.multiline); // true

@@ -16,11 +16,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "index.js"
-  ],
-  "exclude": [
-    "test/**/*",
-    "node_modules"
-  ]
+  "include": ["index.js"],
+  "exclude": ["test/**/*", "node_modules"]
 }

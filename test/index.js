@@ -1,5 +1,5 @@
-const { describe, it } = require('node:test')
-const assert = require('node:assert')
+const { describe, it } = require('node:test');
+const assert = require('node:assert');
 const clone = require('../');
 
 describe('regexp-clone', function () {
@@ -87,97 +87,97 @@ describe('regexp-clone', function () {
     it('ignoreCase flag', function () {
       const a = /hello/i;
       testFlag(a, isIgnoreCase);
-    })
+    });
     it('global flag', function () {
       const a = /hello/g;
       testFlag(a, isGlobal);
-    })
+    });
     it('multiline flag', function () {
       const a = /hello/m;
       testFlag(a, isMultiline);
-    })
+    });
     it('dotAll flag', function () {
       const a = /hello/s;
       testFlag(a, isDotAll);
-    })
+    });
     it('unicode flag', function () {
       const a = /hello/u;
       testFlag(a, isUnicode);
-    })
+    });
     it('sticky flag', function () {
       const a = /hello/y;
       testFlag(a, isSticky);
-    })
+    });
     it('hasIndices flag', function () {
       const a = /hello/d;
       testFlag(a, isIndices);
-    })
+    });
     it('unicodeSets flag', function () {
       const a = /hello/v;
       testFlag(a, isUnicodeSet);
-    })
+    });
     it('no flags', function () {
       const a = /hello/;
       noFlags(a);
-    })
+    });
     it('all flags', function () {
-      allFlags(/hello/gimsuyd, isUnicode);
-      allFlags(/hello/gimsvyd, isUnicodeSet);
-    })
+      allFlags(/hello/dgimsuy, isUnicode);
+      allFlags(/hello/dgimsvy, isUnicodeSet);
+    });
     it('lastIndex', function () {
       const a = /hi/g;
       lastIndex(a);
-    })
-  })
+    });
+  });
 
   describe('instances', function () {
     it('ignoreCase flag', function () {
       const a = new RegExp('hello', 'i');
       testFlag(a, isIgnoreCase);
-    })
+    });
     it('global flag', function () {
       const a = new RegExp('hello', 'g');
       testFlag(a, isGlobal);
-    })
+    });
     it('multiline flag', function () {
       const a = new RegExp('hello', 'm');
       testFlag(a, isMultiline);
-    })
+    });
     it('dotAll flag', function () {
       const a = new RegExp('hello', 's');
       testFlag(a, isDotAll);
-    })
+    });
     it('unicode flag', function () {
       const a = new RegExp('hello', 'u');
       testFlag(a, isUnicode);
-    })
+    });
     it('sticky flag', function () {
       const a = new RegExp('hello', 'y');
       testFlag(a, isSticky);
-    })
+    });
     it('hasIndices flag', function () {
       const a = new RegExp('hello', 'd');
       testFlag(a, isIndices);
-    })
+    });
     it('unicodeSets flag', function () {
       const a = new RegExp('hello', 'v');
       testFlag(a, isUnicodeSet);
-    })
+    });
     it('no flags', function () {
       const a = new RegExp('hmm');
       noFlags(a);
-    })
+    });
     it('all flags', function () {
       const a = new RegExp('hello', 'misguyd');
       allFlags(a, isUnicode);
       const b = new RegExp('hello', 'misgvyd');
       allFlags(b, isUnicodeSet);
-    })
+    });
     it('lastIndex', function () {
       const a = new RegExp('hi', 'g');
       lastIndex(a);
-    })
-  })
+    });
+  });
 
   describe('non-RegExps', () => {
     it('should throwfor strings', () => {
@@ -192,6 +192,5 @@ describe('regexp-clone', function () {
     it('should throw for arrays', () => {
       assert.throws(() => clone([]));
     });
-  })
-})
-
+  });
+});

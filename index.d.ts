@@ -7,7 +7,7 @@ export = regexpClone;
  */
 declare function regexpClone(regexp: RegExp): RegExp;
 declare namespace regexpClone {
-    export { regexpClone, isRegExp };
+  export { regexpClone, isRegExp };
 }
 /**
  * Check if the given object is a RegExp

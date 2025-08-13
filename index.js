@@ -8,8 +8,7 @@ const toString = Object.prototype.toString;
  * @returns {o is RegExp} True if the object is a RegExp, false otherwise
  */
 function isRegExp(o) {
-  return 'object' == typeof o
-    && '[object RegExp]' == toString.call(o);
+  return 'object' == typeof o && '[object RegExp]' == toString.call(o);
 }
 
 /**
