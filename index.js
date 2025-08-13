@@ -1,12 +1,24 @@
+'use strict';
 
 const toString = Object.prototype.toString;
 
-function isRegExp (o) {
+/**
+ * Check if the given object is a RegExp
+ * @param {any} o - The object to check
+ * @returns {o is RegExp} True if the object is a RegExp, false otherwise
+ */
+function isRegExp(o) {
   return 'object' == typeof o
-      && '[object RegExp]' == toString.call(o);
+    && '[object RegExp]' == toString.call(o);
 }
 
-module.exports = exports = function (regexp) {
+/**
+ * Clone a RegExp with flag and lastIndex preservation
+ * @param {RegExp} regexp - The RegExp to clone
+ * @returns {RegExp} A new RegExp instance with the same source, flags, and lastIndex
+ * @throws {TypeError} When the input is not a RegExp
+ */
+function regexpClone(regexp) {
   if (!isRegExp(regexp)) {
     throw new TypeError('Not a RegExp');
   }
@@ -28,3 +40,9 @@ module.exports = exports = function (regexp) {
   return result;
 }
 
+/**
+ * @type {((regexp: RegExp) => RegExp) & { regexpClone: (regexp: RegExp) => RegExp, isRegExp: (o: any) => o is RegExp }}
+ */
+module.exports = regexpClone;
+module.exports.regexpClone = regexpClone;
+module.exports.isRegExp = isRegExp;

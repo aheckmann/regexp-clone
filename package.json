@@ -3,9 +3,18 @@
   "version": "1.1.0",
   "description": "Zero dependency RegExp cloning with flag and lastIndex preservation.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/aheckmann/regexp-clone.git"
@@ -16,5 +25,8 @@
   ],
   "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
   "license": "MIT",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
 }

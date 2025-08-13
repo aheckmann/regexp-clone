@@ -2,6 +2,8 @@
 
 Zero dependency `RegExp` cloner with flag and `lastIndex` preservation.
 
+## Usage
+
 ```js
 const regexpClone = require('regexp-clone');
 
