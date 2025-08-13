@@ -1,7 +1,7 @@
 {
   "name": "regexp-clone",
   "version": "1.0.0",
-  "description": "Clone RegExps with options",
+  "description": "Zero dependency RegExp cloning with flag and lastIndex preservation.",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js"
