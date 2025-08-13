@@ -178,5 +178,20 @@ describe('regexp-clone', function () {
       lastIndex(a);
     })
   })
+
+  describe('non-RegExps', () => {
+    it('should throwfor strings', () => {
+      assert.throws(() => clone('hello'));
+    });
+    it('should throw for numbers', () => {
+      assert.throws(() => clone(123));
+    });
+    it('should throw for objects', () => {
+      assert.throws(() => clone({}));
+    });
+    it('should throw for arrays', () => {
+      assert.throws(() => clone([]));
+    });
+  })
 })
 
