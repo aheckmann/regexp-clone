@@ -5,7 +5,7 @@
 
 [![npm badge][npm-badge-png]][package-url]
 
-Zero dependency `RegExp` cloner with flag and `lastIndex` preservation.
+Zero dependency JavaScript/TypeScript `RegExp` cloner with flag and `lastIndex` preservation.
 
 ## Usage
 
